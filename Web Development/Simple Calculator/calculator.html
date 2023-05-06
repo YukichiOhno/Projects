@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>JavaScript Calculator Assignment</title>
+        <link rel="stylesheet" href="calculator.css">
+        <script src="calculator.js" defer></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1 class="h01">JavaScript</h1>
+            <h1 class="h02">Calculator</h1>
+        </div>
+        <div class="calculator">
+            <div class="show-input">
+                <input readonly type="text" id="output-text">
+            </div>
+            <div class="clear">
+                <input type="button" value="C" onclick="clearText()" class="misc">
+            </div>
+            <div class="one">
+                <input type="button" value="1" onclick="revealValue('1')" class="numbers">
+            </div>
+            <div class="two">
+                <input type="button" value="2" onclick="revealValue('2')" class="numbers">
+            </div>
+            <div class="three">
+                <input type="button" value="3" onclick="revealValue('3')" class="numbers">
+            </div>
+            <div class="sine">
+                <input type="button" value="Sin" onclick="revealValue('Sin ')" class="side">
+            </div>
+            <div class="four">
+                <input type="button" value="4" onclick="revealValue('4')" class="numbers">
+            </div>
+            <div class="five">
+                <input type="button" value="5" onclick="revealValue('5')" class="numbers">
+            </div>
+            <div class="six">
+                <input type="button" value="6" onclick="revealValue('6')" class="numbers">
+            </div>
+            <div class="cosine">
+                <input type="button" value="Cos" onclick="revealValue('Cos ')" class="side">
+            </div>
+            <div class="seven">
+                <input type="button" value="7" onclick="revealValue('7')" class="numbers">
+            </div>
+            <div class="eight">
+                <input type="button" value="8" onclick="revealValue('8')" class="numbers">
+            </div>
+            <div class="nine">
+                <input type="button" value="9" onclick="revealValue('9')" class="numbers">
+            </div>
+            <div class="tangent">
+                <input type="button" value="Tan" onclick="revealValue('Tan ')" class="side">
+            </div>
+            <div class="plus">
+                <input type="button" value="+" onclick="revealValue('+')" class="operations">
+            </div>
+            <div class="subtract">
+                <input type="button" value="-" onclick="revealValue('-')" class="operations">
+            </div>
+            <div class="multiply">
+                <input type="button" value="*" onclick="revealValue('*')" class="operations">
+            </div>
+            <div class="divide">
+                <input type="button" value="/" onclick="revealValue('/')" class="operations">
+            </div>
+            <div class="period">
+                <input type="button" value="." onclick="revealValue('.')" class="misc">
+            </div>
+            <div class="zero">
+                <input type="button" value="0" onclick="revealValue('0')" class="numbers">
+            </div>
+            <div class="equal">
+                <input type="button" value="=" onclick="performOperation()" class="misc">
+            </div>
+            <div class="modulo">
+                <input type="button" value="%" onclick="revealValue('%')" class="operations">
+            </div>
+        </div>
+    </body>
+</html>

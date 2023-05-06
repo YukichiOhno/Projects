@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+@font-face {
+    font-family: itim;
+    src: url("media/Itim-Regular.ttf");
+}
+
+body {
+    font-family: itim;
+    display: grid;
+    background-image: url("media/happy6.jpg");
+}
+
+@media only screen and (max-width: 10000px) {
+    body {
+        grid-template-columns: repeat(14, 1fr);
+        grid-auto-rows: minmax(auto, auto);
+        grid-template-areas: 
+        ".  .  .  hd hd hd hd hd hd hd hd . . . "
+        ".  .  .  cc cc cc cc cc cc cc cc . . . " 
+        ".  .  .  cc cc cc cc cc cc cc cc . . . " 
+        ".  .  .  cc cc cc cc cc cc cc cc . . . " 
+        ".  .  .  cc cc cc cc cc cc cc cc . . . " 
+        ".  .  .  cc cc cc cc cc cc cc cc . . . " 
+        ".  .  .  cc cc cc cc cc cc cc cc . . . " 
+        ".  .  .  .  .  .  .  .  .  .  .  . . . "
+        ".  .  .  .  .  .  .  .  .  .  .  . . . ";
+    }
+
+    div.calculator {
+        grid-template-columns: subgrid;
+        grid-template-areas:
+        "sh sh sh sh sh sh cl cl"
+        "on on tw tw th th si si"
+        "fo fo fi fi sx sx co co"
+        "se se ei ei ni ni ta ta"
+        "pl pl su su mu mu di di"
+        "pe pe ze ze eq eq mo mo";
+    }
+
+    .header > h1 {
+        font-size: 3em;
+    }
+
+}
+
+@media only screen and (max-width: 1500px) {
+    body {
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: minmax(auto, auto);
+        grid-template-areas: 
+        ".  .  hd hd hd hd hd hd hd hd . . "
+        ".  .  cc cc cc cc cc cc cc cc . . " 
+        ".  .  cc cc cc cc cc cc cc cc . . " 
+        ".  .  cc cc cc cc cc cc cc cc . . " 
+        ".  .  cc cc cc cc cc cc cc cc . . " 
+        ".  .  cc cc cc cc cc cc cc cc . . " 
+        ".  .  cc cc cc cc cc cc cc cc . . " 
+        ".  .  .  .  .  .  .  .  .  .  . . "
+        ".  .  .  .  .  .  .  .  .  .  . . ";
+    }
+
+    div.calculator {
+        grid-template-columns: subgrid;
+        grid-template-areas:
+        "sh sh sh sh sh sh cl cl"
+        "on on tw tw th th si si"
+        "fo fo fi fi sx sx co co"
+        "se se ei ei ni ni ta ta"
+        "pl pl su su mu mu di di"
+        "pe pe ze ze eq eq mo mo";
+    }
+
+    .header > h1 {
+        font-size: 2.80em;
+    }
+
+}
+
+@media only screen and (max-width: 1100px) {
+    body {
+        grid-template-columns: repeat(10, 1fr);
+        grid-auto-rows: minmax(auto, auto);
+        grid-template-areas: 
+        ".  hd hd hd hd hd hd hd hd . "
+        ".  cc cc cc cc cc cc cc cc . " 
+        ".  cc cc cc cc cc cc cc cc . " 
+        ".  cc cc cc cc cc cc cc cc . " 
+        ".  cc cc cc cc cc cc cc cc . " 
+        ".  cc cc cc cc cc cc cc cc . " 
+        ".  cc cc cc cc cc cc cc cc . ";
+    }
+
+    div.calculator {
+        grid-template-columns: subgrid;
+        grid-template-areas:
+        "sh sh sh sh sh sh cl cl"
+        "on on tw tw th th si si"
+        "fo fo fi fi sx sx co co"
+        "se se ei ei ni ni ta ta"
+        "pl pl su su mu mu di di"
+        "pe pe ze ze eq eq mo mo";
+    }
+
+    .header > h1 {
+        font-size: 2.50em;
+    }
+
+}
+
+@media only screen and (max-width: 570px) {
+    body {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(auto, auto);
+        grid-template-areas:
+        "hd hd hd hd"
+        "cc cc cc cc"
+        "cc cc cc cc"
+        "cc cc cc cc"
+        "cc cc cc cc"
+        "cc cc cc cc"
+        "cc cc cc cc";
+    }
+
+    div.calculator {
+        grid-template-columns: subgrid;
+        grid-template-areas:
+        "sh sh sh cl"
+        "on tw th si"
+        "fo fi sx co"
+        "se ei ni ta"
+        "pl su mu di"
+        "pe ze eq mo";
+    }
+
+    .header > h1 {
+        font-size: 2.5em;
+    }
+}
+
+
+body > div {
+    border-radius: 5px;
+}
+
+div.header {
+    display: grid;
+    grid-area: hd;
+    align-self: center;
+    background-image: url("media/happy.jpg");
+}
+
+.header > h1 {
+    text-align: center;
+    background-color: rgba(240, 248, 255, 0.35);
+    color:rgba(153, 40, 25, 0.897);
+}
+
+
+div.calculator {
+    grid-area: cc;
+    display: grid;
+}
+
+div.calculator > div {
+    background-color: rgba(74, 177, 177, 0.63);
+    border-radius: 5px;
+    border: 0.5px solid rgb(92, 49, 74);
+    overflow: hidden;
+}
+
+/* Start: Within the calculator*/
+div.show-input {
+    grid-area: sh;
+}
+
+div.clear {
+    grid-area: cl;
+}
+
+div.one {
+    grid-area: on;
+}
+
+div.two {
+    grid-area: tw;
+}
+
+div.three {
+    grid-area: th;
+}
+
+div.sine {
+    grid-area: si;
+}
+
+div.four {
+    grid-area: fo;
+}
+
+div.five {
+    grid-area: fi;
+}
+
+div.six {
+    grid-area: sx;
+}
+
+div.cosine {
+    grid-area: co;
+}
+
+div.seven {
+    grid-area: se;
+}
+
+div.eight {
+    grid-area: ei;
+}
+
+div.nine {
+    grid-area: ni;
+}
+
+div.tangent {
+    grid-area: ta;
+}
+
+div.plus {
+    grid-area: pl;
+}
+
+div.subtract {
+    grid-area: su;
+}
+
+div.multiply {
+    grid-area: mu;
+}
+
+div.divide {
+    grid-area: di;
+}
+
+div.period {
+    grid-area: pe;
+}
+
+div.zero {
+    grid-area: ze;
+}
+
+div.equal {
+    grid-area: eq;
+}
+
+div.modulo {
+    grid-area: mo;
+}
+/* End: Within the calculator*/
+
+input {
+    height: 100%;
+    width: 100%;
+    font-size: 400%;
+    cursor: pointer;
+    font-family: itim;
+}
+
+[type*="button"] {
+    color: rgb(175, 159, 72);
+}
+
+[type*="button"]:hover {
+    opacity: 0.7;
+}
+
+[type*="button"]:active {
+    opacity: 0.1;
+}
+
+#output-text {
+    background-image: url("media/happy4.jpg");
+    color:rgba(54, 44, 16, 0.904);
+}
+
+.numbers {
+    background-image: url("media/happy2.jpg");
+    color: rgb(6, 10, 1);
+}
+
+.side {
+    background-image: url("media/happy5.jpg");
+    color: rgb(255, 255, 255);
+}
+
+.misc {
+    background-image: url("media/stars-yellow.jpg");
+    color: rgb(236, 225, 225);
+}
+
+.operations {
+    background-image: url("media/letter.jpg");
+    color: rgb(236, 225, 225);
+}
