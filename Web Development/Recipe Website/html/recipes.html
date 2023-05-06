@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../media/easy-bites-logo.ico" type="image/x-icon">
+    <script src="../javascript/components.js" defer></script>
+    <script src="../javascript/helpcenter.js" defer></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Browse Recipes</title>
+    <style>
+        .recipe-searchbar{
+            display: flex;
+            border-style: none none solid none;
+            border-width: 1px;
+            border-color: #B2B2B2;
+            height: 30px;
+            padding: 5px 0px;
+        }
+        .recipe-searchbar>img{
+            padding: 5px;
+        }
+        .recipe-searchbar>input[type=search]{
+            background-color: RGBA(0,0,0,0);
+            border: none;
+            flex-grow: 1;
+            outline: none;
+        }
+        .recipes-category-feed{
+            display: flex;
+            gap: 35px;
+            overflow-x: auto;
+            height: 250px;
+            align-items: center; 
+        }
+        .scroll-feed-right{
+            position: absolute;
+            right:0px;
+            background-image: linear-gradient(to right, RGBA(0,0,0,0) , RGBA(255,255,255,1));
+            width: 20px;
+            top:0px;
+            bottom: 0px;
+        }
+        .recipes-category-feed::-webkit-scrollbar{
+            display: none;
+        }
+
+        .recipe-item{
+            border: 1px solid #D4D4D4;
+            border-radius: 15px;
+            width: 323px;
+            height: 231px;
+            min-width: 323px;
+            background-color: white;
+            cursor: pointer;
+        }
+        .recipe-item *{
+            text-decoration: none;
+            color: #3A3A3A !important;
+        }
+        .recipe-item:hover{
+            transform: scale(1.07);
+            transition: transform .2s;
+            position: relative;
+        }
+        .recipe-item-preview{
+            height:65%;
+        }
+        .recipe-item-preview>img{
+            border-radius: 15px 15px 0px 0px;
+            object-fit: cover;
+        }
+        .recipe-item-details{
+            height:30%;
+            padding: 10px 20px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .recipe-item .item-title{
+            display: block;
+            font-weight: 700;
+        }
+        .recipe-item .item-description{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="page-flow">
+        <nav id="page-header"></nav>
+        <div id="page-body">
+            <div class="page-title">
+                <h1 class="page-title">Recipes</h1>
+            </div>
+
+            <div class="recipe-searchbar">
+                <img src="../media/Images/general/search.svg" alt="🔍">
+                <input type="search" id="recipe-search" name="q" placeholder="Search">
+            </div>
+
+            <div>
+            <h2>Health and Diet</h2>
+                <div class="recipes-category-feed" id="health-feed"></div>
+            </div>
+            <!-- <div>
+                <h2>My Bookmarks</h2>
+                <div class="recipes-category-feed" id="bookmarks-feed"></div>
+            </div> -->
+            <div>
+                <h2>Breakfast</h2>
+                <div class="recipes-category-feed" id="breakfast-feed"></div>
+            </div>
+            <div style="position:relative">
+                <h2>Lunch</h2>
+                <div class="recipes-category-feed" id="lunch-feed"></div>
+                <div class="scroll-feed-right"></div>
+            </div>
+            <div>
+                <h2>Cuisine</h2>
+                <div class="recipes-category-feed" id="cuisine-feed"></div>
+            </div>
+            <div>
+                <h2>Desserts</h2>
+                <div class="recipes-category-feed" id="desserts-feed"></div>
+            </div>
+            <div>
+                <h2>Drinks</h2>
+                <div class="recipes-category-feed" id="drinks-feed"></div>
+            </div>
+
+            <template id="recipe-item-template">
+                <div class="recipe-item">
+                    <a href="https://www.google.com">
+                    <div class="recipe-item-preview">
+                        <img class="item-img" src="" alt="food img" height="100%" width="100%">
+                    </div>
+                    <div class="recipe-item-details">
+                        <span class="item-title">[TITLE]</span>
+                        <span class="item-description">[DESCRIPTION]</span>
+                    </div>
+                    </a>
+                </div>
+            </template>
+
+            <hr>
+            <p>Developer: <span class="developer-name">Kevin Tojin</span></p>
+        </div>
+        <footer id="page-footer">footer</footer>
+    </div>
+    <div id="helpcenter-component"></div>
+</body>
+
+<!-- SCRIPT THAT POPULATES FEED FROM DATABASE OF INDEXED RECIPES -->
+<script>
+    //GETS DATA FROM RECIPES THAT WILL BE INSERTED INTO FEED
+    fetch("https://prod-02.westus.logic.azure.com/workflows/65aea8850e414eeb82b3b3ca5b257508/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fjd5E9qj3ZkGZz4_0VkHZTZufZnD-VTXFh4AM7sSntQ")
+        .then((response) => {
+            response.json()
+            .then(json => {
+                populateFeed(json.value);
+                }
+            )
+        }
+        );
+
+    //POPULATES FEED
+    function populateFeed(recipeIndex){
+        //console.log(recipeIndex);
+        //GETS FEED CONTAINER WHERE CONTENT IS GOING TO BE INSERTED
+        const trendingFeed = document.getElementById("health-feed");
+        const bookmarksFeed = document.getElementById("bookmarks-feed");
+        const breakfastFeed = document.getElementById("breakfast-feed");
+        const lunchFeed = document.getElementById("lunch-feed");
+        const cuisineFeed = document.getElementById("cuisine-feed");
+        const dessertsFeed = document.getElementById("desserts-feed");
+        const drinksFeed = document.getElementById("drinks-feed");
+
+        //GETS TEMPLATE USED TO INSERT CONTENT
+        const recipeItemTemplate = document.querySelector("#recipe-item-template");
+
+        //INSERTS RECIPES INTO FEED CONTAINERS
+        recipeIndex.forEach(thisItem => {
+            //console.log(true);
+            const thisRecipeItem = recipeItemTemplate.content.cloneNode(true);
+            thisRecipeItem.querySelector(".item-title").textContent=thisItem.Title;
+            thisRecipeItem.querySelector(".item-description").textContent=thisItem.Description;
+            thisRecipeItem.querySelector(".item-img").src=thisItem.ThumbnailImage;
+            thisRecipeItem.querySelector("a").href=thisItem.LinkToPage;
+            
+            
+            switch (thisItem.RecipeType.Value){
+                case 'Healthy and Diet':
+                trendingFeed.appendChild(thisRecipeItem);
+                break;
+                case 'bookmarks':
+                bookmarksFeed.appendChild(thisRecipeItem);
+                break;
+                case 'Breakfast':
+                breakfastFeed.appendChild(thisRecipeItem);
+                break;
+                case 'Lunch':
+                lunchFeed.appendChild(thisRecipeItem);
+                break;
+                case 'Cuisine':
+                cuisineFeed.appendChild(thisRecipeItem);
+                break;
+                case 'Desserts':
+                dessertsFeed.appendChild(thisRecipeItem);
+                break;
+                case 'Drinks':
+                drinksFeed.appendChild(thisRecipeItem);
+                break;
+            }
+        });
+    }
+
+</script>
+
+<!-- SCRIPT THAT SEARCHES RECIPES LOADED FROM SEARCH TEXT -->
+<script>
+    const searchBar = document.getElementById("recipe-search");
+    searchBar.addEventListener("input", (element)=> {
+        //console.log(searchBar.value);
+        const feedItems = document.querySelectorAll(".recipe-item");
+        //console.log(feedItems);
+        feedItems.forEach(element => {
+            element.querySelector(".item-title").textContent
+            element.querySelector(".item-description").textContent
+
+            if(
+                element.querySelector(".item-title").textContent.toUpperCase().includes(searchBar.value.toUpperCase())||
+                element.querySelector(".item-description").textContent.toUpperCase().includes(searchBar.value.toUpperCase())
+                ) {
+                element.style.display = "block";
+            }
+            else {
+                element.style.display = "none";
+            }
+        });
+
+        const feedGallery = document.querySelectorAll(".recipes-category-feed");
+        //for each feed
+        feedGallery.forEach(element => {
+            //for each item
+            let geedGalleryTotal = 0;
+            const galleryItems = element.querySelectorAll(".recipe-item");
+            for (let i=0; i< galleryItems.length; i++){
+                //console.log(galleryItems[i].style.display);
+                if(galleryItems[i].style.display == "block"){geedGalleryTotal = geedGalleryTotal+1}
+                //console.log(geedGalleryTotal);
+                if(geedGalleryTotal >0) {
+                    element.style.display = "flex";
+                }
+                else {
+                    element.style.display = "none";
+                }
+            }
+        });
+    });
+</script>
+
+</html>

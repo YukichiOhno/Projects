@@ -1,0 +1,53 @@
+<head>
+    <style>
+        .pageheader-element-banner{
+            height: 60px;
+            position: absolute;
+            background-color: #FFF;
+            left:0px;
+            right:0px;
+            z-index: -1;
+        }
+        .pageheader-element-flow{
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+        .pageheader-element-flow li{
+            display: inline-block;
+            padding: 5px;
+        }
+        .pageheader-element-flow>.pageheader-nav-spacer{
+            flex-grow: 1;
+        }
+        .pageheader-nav-menu{
+            cursor: pointer;
+            margin: 0px;
+        }
+        .pageheader-nav-menu li a{
+            text-decoration: none;
+            color: #3A3A3A;
+        }
+        .pageheader-nav-menu li a.active-tab{
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pageheader-element-banner"></div>
+    <div class="pageheader-element-flow">
+        <div class="pageheader-nav-logo"><a href="Home.html" target="_self"><img src="../media/easy-bites-logo.svg" alt=""></a></div>
+        <div class="pageheader-nav-spacer"></div>
+        <div>
+            <ul class="pageheader-nav-menu">
+                <li><a href="/html/home.html" class="active-tab">Home</a></li>
+                <li><a href="/html/recipes.html">Recipes</a></li>
+                <li><a href="/html/about-us.html">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+</body>

@@ -1,0 +1,550 @@
+@font-face {
+    font-family: inter;
+    src: url('../media/Fonts/Inter.ttf');
+}
+
+body {
+    background-color: #F5F5F5;
+    height: 100vh;
+    margin: 0px;
+    font-family: inter;
+    color: #3A3A3A;
+}
+#page-flow {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin: auto;
+}
+
+#page-header{
+    height: 60px;
+}
+#page-body{
+    flex-grow: 1;     
+}
+#page-footer{
+    height: 6rem;     
+}
+@media screen and (min-width:576px) {
+    #page-flow {
+        max-width:618px;
+    }
+}
+@media screen and (min-width:768px) {
+    #page-flow {
+        max-width:720px;
+    }
+}   
+@media screen and (min-width:992px) {
+    #page-flow {
+        max-width:960px;
+    }
+}
+@media screen and (min-width:1200px) {
+    #page-flow {
+        max-width:1140px;
+    }
+}
+@media screen and (min-width:1400px) {
+    #page-flow {
+        max-width:1140px;
+    }
+}
+
+.page-title {
+    margin-top: 0;
+    height: 50px;
+    margin-bottom: 10%;
+}
+
+.page-title > h1 {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    padding: 2%;
+    text-align: center;
+    background-color: #D9D9D9;
+}
+
+.about-us .main {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-template-areas:
+    "om om md md md md md md"
+    "wa wa dl dl dl dl dl dl"
+    "wa wa dl dl dl dl dl dl"
+    "wa wa dl dl dl dl dl dl"
+    "wa wa dl dl dl dl dl dl"
+    "wa wa dl dl dl dl dl dl"
+    "wa wa dl dl dl dl dl dl"
+    "wa wa dl dl dl dl dl dl"
+    "wa wa dl dl dl dl dl dl";
+    column-gap: 2%;
+    row-gap: 5%;
+}
+
+.about-us h2 {
+    text-align: center;
+}
+
+.about-us .main > .our-mission {
+    grid-area: om;
+}
+
+.about-us .main > .mission-description {
+    grid-area: md;
+}
+
+.about-us .main > .who-we-are {
+    grid-area: wa;
+    word-wrap: break-word;
+}
+
+.about-us .main > .who-we-are h2,  .about-us .main > .our-mission h2 {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10%;
+    text-align: left;
+}
+
+.about-us .main .who-we-are .developer-info > h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.about-us .main .who-we-are .developer-info > p {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 9%;
+}
+
+.about-us .main > .developer-list {
+    display: grid;
+    grid-area: dl;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    row-gap: 1%;
+    column-gap: 1%;
+    grid-template-areas:
+    "d1 d2 d3"
+    "d4 d5 d6"
+    "d7 d8 d9";
+}
+
+.about-us .main .developer-list > div {
+    background-color: #FFFFFF;
+    border: 1px solid #D4D4D4;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.about-us .developer-list > #developer-1 {
+    grid-area: d1;
+}
+
+.about-us .developer-list > #developer-2 {
+    grid-area: d2;
+}
+
+.about-us .developer-list > #developer-3 {
+    grid-area: d3;
+}
+
+.about-us .developer-list > #developer-4 {
+    grid-area: d4;
+}
+
+.about-us .developer-list > #developer-5 {
+    grid-area: d5;
+}
+
+.about-us .developer-list > #developer-6 {
+    grid-area: d6;
+}
+
+.about-us .developer-list > #developer-7 {
+    grid-area: d7;
+}
+
+.about-us .developer-list > #developer-8 {
+    grid-area: d8;
+}
+
+.about-us .developer-list > #developer-9 {
+    grid-area: d9;
+}
+
+.about-us .developer-list .developer > img {
+    margin-top: 2%;
+    width: 85%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 49%;
+    border: 1px solid #D4D4D4;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-us .developer-list .info {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.about-us .developer-list .info > h4 {
+    margin: 0;
+    padding: 0;
+    margin-top: 2%;
+}
+
+.about-us .developer-list .info > p {
+    margin: 0;
+    padding: 0;
+    margin-top: 5%;
+}
+
+.about-us .developer-list .info > button {
+    margin: 0;
+    display: block;
+    border-radius: 10px;
+    width: 50%;
+    padding: 2% 5%;
+    background-color: white;
+    color: #292121;
+    border: solid 1px black;
+    /* border-width: 0px; */
+    font-weight: 600;
+    font-size: 0.9em;
+    position: absolute;
+    left: 25%;
+    bottom: 5%;
+    text-align: center;
+}
+
+.about-us .developer-list .info > button:hover {
+    color: #6b5e5e;
+    background-color: #fdf6f6;
+    cursor: pointer;
+}
+
+.about-us .developer-list .info > button:active {
+    color: #a38e8e;
+    background-color: #d1d0d0;
+}
+
+hr {
+    border-color: rgb(65, 59, 59);
+    margin: 0;
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+
+.about-us #submission #form-contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: 
+    "c1 c2"
+    "ss ss"
+    "ss ss"
+    "ss ss"
+    "su su";
+    gap: 3% 1%;
+    font-weight: bold;
+}
+
+.about-us #submission #form-contact > .column-1 {
+    grid-area: c1;
+}
+
+.about-us #submission #form-contact > .column-2 {
+    grid-area: c2;
+}
+
+.about-us #submission #form-contact > .span-space {
+    grid-area: ss;
+}
+
+.about-us #submission #form-contact > .submit {
+    grid-area: su;
+}
+
+.about-us #submission {
+    background-color: #FFFFFF;
+    padding: 2%;
+    border-radius: 5px;
+}
+
+
+.about-us #submission #form-contact label {
+    display: block;
+}
+
+.about-us #submission #form-contact input, .about-us #submission #form-contact select {
+    display: block;
+    margin: 0;
+    margin-bottom: 3%;
+    width: 95%;
+    height: 23%;
+    border-radius: 5px;
+    background-color: #F2F2F2;
+    border: 1px solid #F2F2F2;
+}
+
+.about-us #submission #form-contact textarea {
+    display: block;
+    margin: 0;
+    width: 99%;
+    height: 90%;
+    border-radius: 5px;
+    background-color: #F2F2F2;
+    border: 1px solid #F2F2F2;
+}
+
+.about-us #submission #form-contact #submit {
+    margin: 0;
+    display: block;
+    margin-left: auto;
+    border-radius: 38px;
+    width: 20%;
+    padding: 2% 5%;
+    background-color: black;
+    color: white;
+    border-width: 0px;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.about-us #submission #form-contact #submit:hover {
+    color: #6b5e5e;
+    background-color: #fdf6f6;
+    cursor: pointer;
+}
+
+.about-us #submission #form-contact #submit:active {
+    color: #a38e8e;
+    background-color: #d1d0d0;
+}
+
+.about-us #submission #form-contact .important {
+    color: red;
+}
+
+.about-us #submission #form-contact .optional {
+    font-weight: normal;
+}
+
+.homepage .page-title {
+    height: 500px;
+    margin-top: 0;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3%;
+}
+
+.slideshow, .slideshow * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slideshow {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.swiper .swiper-button-prev, .swiper .swiper-button-next {
+    color: white;
+}
+
+.swiper .swiper-pagination-bullet-active {
+    background-color: white;
+}
+
+.homepage .perks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(270px, auto);
+    grid-template-areas: 
+    "one two"
+    "thr for";
+    gap: 1.5% 1.5%;
+}
+
+.homepage .perks div {
+    border: 1px solid #D4D4D4;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    padding: 1% 2%;
+}
+
+.homepage .perks > .one {
+    grid-area: one;
+}
+
+.homepage .perks > .two {
+    grid-area: two;
+}
+
+.homepage .perks > .three {
+    grid-area: thr;
+}
+
+.homepage .perks > .four {
+    grid-area: for;
+}
+
+.homepage .perks img {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-bottom: 1.5%;
+}
+
+.homepage .perks h3 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1%;
+}
+
+.homepage .perks p {
+    margin: 0;
+    padding: 0;
+    font-size: 0.85em;
+    margin: 1%;
+}
+
+.homepage #page-flow #page-body a {
+    background-color: #eb8a8a;
+    display: block;
+    padding: 2% 5%;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white !important;
+    font-weight: 600;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.homepage #page-flow #page-body a:link {
+    text-decoration: none;
+    color: #292121;
+}
+
+.homepage #page-flow #page-body a:visited {
+    text-decoration: none;
+    color: #292121;
+}
+
+/* .homepage #page-flow #page-body a:hover {
+    color: #6b5e5e;
+    background-color: #fdf6f6;
+} */
+
+.homepage #page-flow #page-body a:active {
+    color: #6b5e5e;
+    background-color: #fdf6f6;
+}
+
+span.developer-name {
+    font-weight: bold;
+}
+
+.recipes-page .recipe-searchbar{
+    display: flex;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #B2B2B2;
+    height: 30px;
+    padding: 5px 0px;
+}
+.recipes-page .recipe-searchbar>img{
+    padding: 5px;
+}
+.recipes-page .recipe-searchbar>input[type=search]{
+    background-color: RGBA(0,0,0,0);
+    border: none;
+    flex-grow: 1;
+    outline: none;
+}
+.recipes-page .recipes-category-feed{
+    display: flex;
+    gap: 35px;
+    overflow-x: auto;
+    height: 250px;
+    align-items: center; 
+}
+.recipes-page .scroll-feed-right{
+    position: absolute;
+    right:0px;
+    background-image: linear-gradient(to right, RGBA(0,0,0,0) , RGBA(255,255,255,1));
+    width: 20px;
+    top:0px;
+    bottom: 0px;
+}
+.recipes-page .recipes-category-feed::-webkit-scrollbar{
+    display: none;
+}
+
+.recipes-page .recipe-item{
+    border: 1px solid #D4D4D4;
+    border-radius: 15px;
+    width: 323px;
+    height: 231px;
+    min-width: 323px;
+    background-color: white;
+    cursor: pointer;
+}
+.recipes-page .recipe-item *{
+    text-decoration: none;
+    color: #3A3A3A !important;
+}
+.recipes-page .recipe-item:hover{
+    transform: scale(1.07);
+    transition: transform .2s;
+    position: relative;
+}
+.recipes-page .recipe-item-preview{
+    height:65%;
+}
+.recipes-page .recipe-item-preview>img{
+    border-radius: 15px 15px 0px 0px;
+    object-fit: cover;
+}
+.recipes-page .recipe-item-details{
+    height:30%;
+    padding: 10px 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.recipes-page .recipe-item .item-title{
+    display: block;
+    font-weight: 700;
+}
+.recipes-page .recipe-item .item-description{
+    display: block;
+}

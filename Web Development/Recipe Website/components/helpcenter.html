@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <style>
+
+        #QA-main-menu{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            bottom: 15px;
+            right:15px;
+            align-items: flex-end;
+            z-index: 100;
+        }
+        #QA-main-menu > div{
+            background-color: black;
+            height: 36px;
+            width: 36px;
+            border-radius: 18px;
+            margin: 5px;
+            cursor: pointer;
+            user-select: none;
+            color: white;
+            transition: width 0.1s;
+            overflow: hidden;
+            outline: solid;
+        }
+        #QA-main-menu > div:hover{
+            width: 130px;
+        }
+        #QA-main-menu > div:active{
+            background-color: white;
+            color:black;
+        }
+        #QA-main-menu > div > .QA-icon{
+            line-height: 36px;
+            width: 36px;
+            display: block;
+            text-align: center;
+            color:inherit;
+            float: left;
+        }
+        #QA-main-menu > div > .QA-text{
+            line-height: 36px;
+            display: block;
+            width:auto;
+            font-size:13px;
+        }
+        .QA-class-overlay-container{
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            top:0px;
+            left:0px;
+            flex-direction: column;
+            align-items:center;
+            justify-content: center;
+            z-index: 101;
+        }
+        #QA-help-center-context-menu-container{
+            display: none;
+        }
+        #QA-help-center-context-menu{
+            list-style-type: none;
+            background-color: black;
+            max-height: 100%;
+            overflow-y:auto;
+            position:fixed;
+            bottom:65px;
+            right:20px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+        }
+        #QA-help-center-context-menu>ul{
+            list-style-type: none;
+            color: white;
+            padding:0px;
+            margin: 0px;
+        }
+        #QA-help-center-context-menu>ul>li{
+            cursor: pointer;
+            padding: 5px 15px 5px 15px;
+            user-select: none;
+            font-size:13px;
+        }
+        #QA-help-center-context-menu>ul>li:hover{
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        #QA-help-center-context-menu>ul>li:active{
+            background-color: white;
+            color: black;
+        }
+        #QA-help-center-context-menu>ul>li.divider{
+            height: 1px;
+            background-color: #6c6c6c;
+            padding: 0px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Quick access - main menu -->
+    <div id="QA-main-menu">
+        <div id="QA-item-backtotop" onclick="qaBackToTop()" ><span class="QA-icon">^</span><span class="QA-text">Back to top</span></div>
+        <div onclick="qaHelpCenter('show-container')"><span class="QA-icon">?</span><span class="QA-text">Help Center</span></div>
+    </div>
+
+    <!-- Quick access - help center context menu -->
+    <div id="QA-help-center-context-menu-container" class="QA-class-overlay-container">
+        <div id="QA-help-center-context-menu">
+            <ul>
+                <li><span onclick="qaHelpCenter('run-emailus')" title="Have a general query? Contact us through email.">Email Us</span></li>
+                <li><span onclick="qaHelpCenter('run-contactus')">Contact Us</span></li>
+            </ul>
+        </div>
+        <div style="height:100vh; width:100vw; position:fixed;z-index: -1;" onclick="qaHelpCenter('hide-container');"></div>
+    </div>
+
+</body>
+</html>
