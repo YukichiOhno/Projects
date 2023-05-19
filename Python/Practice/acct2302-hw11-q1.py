@@ -206,3 +206,33 @@ if __name__ == "__main__":
     for i in range(segment_amount + 1):
         print(f"${int(net_operating_income[i]):^17,}", end=" ")
     print()
+    print()
+
+    segments_dict_updated = {key.lower().replace(" ", ""): value for key, value in segments_dict.items()}
+
+    print("List of Segments:")
+    for item in range(1, len(name)):
+        print(f"  {name[item]}")
+    print()
+
+    while True:
+        user_segment = input("Enter a segment to discontinue (press 'q' to quit): ").lower().replace(" ", "")
+
+        if user_segment == "q":
+            break
+
+        if user_segment in segments_dict_updated:
+            lost_contribution_margin = -segments_dict_updated[user_segment]["Contribution Margin"]
+            avoidable_fixed_cost = segments_dict_updated[user_segment]["Advertising, traceable"] + \
+                                   segments_dict_updated[user_segment]["Salaries of product-line managers"]
+            financial_standing = lost_contribution_margin + avoidable_fixed_cost
+
+            if financial_standing < 0:
+                print(f"Financial DISADVANTAGE: ${abs(int(financial_standing)):,}")
+                print("DO NOT DISCONTINUE")
+            else:
+                print(f"Financial ADVANTAGE: ${abs(int(financial_standing)):,}")
+                print("DISCONTINUE SEGMENT")
+        else:
+            print("Segment Does not exist")
+        print()
