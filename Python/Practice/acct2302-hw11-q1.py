@@ -21,6 +21,16 @@ class Segments:
                          self.common_fixed_expenses
         return fixed_expenses
 
+    def traceable_fixed_expenses(self):
+        traceable_fixed_expenses = self.advertising_traceable + \
+                                   self.depreciation + \
+                                   self.managers_salary
+        return traceable_fixed_expenses
+
+    def product_line_segment_margin(self):
+        product_line_segment_margin = self.contribution_margin() - self.traceable_fixed_expenses()
+        return product_line_segment_margin
+
     def net_operating_income(self):
         return self.contribution_margin() - self.total_fixed_expenses()
 
@@ -76,6 +86,7 @@ if __name__ == "__main__":
     total.common_fixed_expenses = 0.0
     for i in range(len(segments)):
         total.common_fixed_expenses = total.common_fixed_expenses + segments[i].common_fixed_expenses
+    # End: total
 
     # Storing all accounts from each segments + total\
     name = list()
@@ -141,9 +152,9 @@ if __name__ == "__main__":
                                   "Total fixed expenses": fixed_expenses[i],
                                   "Net Operating Income (Loss)": net_operating_income[i]}
 
-    # Output all Segments including total
+    # Contribution Income Statement
     print()
-    print(" " * 45, end=" ")
+    print(f"{'Contribution Income Statement':<45}", end=" ")
     for i in range(segment_amount + 1):
         print(f"{name[i]:-^17}", end=" ")
     print()
@@ -208,6 +219,8 @@ if __name__ == "__main__":
     print()
     print()
 
+    # This section asks for user query about which segment they want to discontinue, and it'll determine if
+    # the user should actually discontinue the segment or not
     segments_dict_updated = {key.lower().replace(" ", ""): value for key, value in segments_dict.items()}
 
     print("List of Segments:")
@@ -236,3 +249,85 @@ if __name__ == "__main__":
         else:
             print("Segment Does not exist")
         print()
+
+    # Addition: data for segment income statement
+    traceable_fixed_expenses = list()
+    traceable_fixed_expenses.append(total.traceable_fixed_expenses())
+    for i in range(len(segments)):
+        traceable_fixed_expenses.append(segments[i].traceable_fixed_expenses())
+
+    product_line_segment_margin = list()
+    product_line_segment_margin.append(total.product_line_segment_margin())
+    for i in range(len(segments)):
+        product_line_segment_margin.append(segments[i].product_line_segment_margin())
+
+    # Segment Income Statement
+    print()
+    print(f"{'Segment Income Statement':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"{name[i]:-^17}", end=" ")
+    print()
+
+    print("-" * 46, end="")
+    print("-" * (18 * (segment_amount + 1)))
+
+    print(f"{'Sales':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"${int(sales[i]):^17,}", end=" ")
+    print()
+
+    print(f"{'Variable manufacturing and selling expenses':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"${int(variable[i]):^17,}", end=" ")
+    print()
+
+    print(" " * 45, end=" ")
+    print("-" * (18 * (segment_amount + 1)))
+
+    print(f"{'Contribution Margin (loss)':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"${int(contribution_margin[i]):^17,}", end=" ")
+    print()
+
+    print("Traceable Fixed expenses:")
+
+    print(f"{'  Advertising, traceable':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"${int(advertising_traceable[i]):^17,}", end=" ")
+    print()
+
+    print(f"{'  Depreciation of special equipment':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"${int(depreciation[i]):^17,}", end=" ")
+    print()
+
+    print(f"{'  Salaries of product-line managers':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"${int(manager_salary[i]):^17,}", end=" ")
+    print()
+
+    print(" " * 45, end=" ")
+    print("-" * (18 * (segment_amount + 1)))
+
+    print(f"{'Total traceable fixed expenses':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"${int(traceable_fixed_expenses[i]):^17,}", end=" ")
+    print()
+
+    print(" " * 45, end=" ")
+    print("-" * (18 * (segment_amount + 1)))
+
+    print(f"{'Product line segment margin (loss)':<45}", end=" ")
+    for i in range(segment_amount + 1):
+        print(f"${int(product_line_segment_margin[i]):^17,}", end=" ")
+    print()
+
+    print(f"{'Common fixed expenses':<45}", end=" ")
+    print(f"${int(common_fixed_expenses[0]):^17,}", end=" ")
+    print()
+
+    print(" " * 45, end=" ")
+    print("-" * 20)
+
+    print(f"{'Net operating income (loss)':<45}", end=" ")
+    print(f"${int(net_operating_income[0]):^17,}")
