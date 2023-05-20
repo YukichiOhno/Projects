@@ -36,25 +36,37 @@ class Segments:
 
 
 if __name__ == "__main__":
-    segment_amount = int(input("Enter the amount of segments: "))
+    while True:
+        try:
+            segment_amount = int(input("Enter the amount of segments: "))
+            break
+        except ValueError:
+            print("Invalid input. Please enter a whole number.")
+            print()
     print()
 
     segments = []
-    for i in range(1, segment_amount+1):
-        division = Segments()
-        print(f"Division {i} Information")
-        division.name = input("Enter name: ")
-        division.sales = float(input("Enter total sales: "))
-        division.variable = float(input("Enter total variable expenses: "))
+    i = 1
+    while i < segment_amount + 1:
+        try:
+            division = Segments()
+            print(f"Division {i} Information")
+            division.name = input("Enter name: ")
+            division.sales = float(input("Enter total sales: "))
+            division.variable = float(input("Enter total variable expenses: "))
 
-        # Fixed Expenses
-        division.advertising_traceable = float(input("Enter advertising traceable: "))
-        division.depreciation = float(input("Enter depreciation of sales equipment: "))
-        division.managers_salary = float(input("Enter salaries of product-line managers: "))
-        division.common_fixed_expenses = float(input("Enter allocated common fixed expenses: "))
+            # Fixed Expenses
+            division.advertising_traceable = float(input("Enter advertising traceable: "))
+            division.depreciation = float(input("Enter depreciation of sales equipment: "))
+            division.managers_salary = float(input("Enter salaries of product-line managers: "))
+            division.common_fixed_expenses = float(input("Enter allocated common fixed expenses: "))
 
-        segments.append(division)
-        print()
+            segments.append(division)
+            i += 1
+            print()
+        except ValueError:
+            print("Invalid Input. Try Again (Enter values only)")
+            print()
 
     # Start: Total
     total = Segments()
