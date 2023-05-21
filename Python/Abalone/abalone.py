@@ -66,8 +66,6 @@ def user_choice_calculations(determiner, scale):
             base_source_calculations(abalone_data, determiner, scale, "collector id")
         elif user_base == "c":
             base_source_calculations(abalone_data, determiner, scale, "organization")
-        elif user_base == "c":
-            base_source_calculations(abalone_data, determiner, scale, "organization")
         elif user_base == "d":
             base_source_calculations(abalone_data, determiner, scale, "water region")
         elif user_base == "e":
