@@ -1,9 +1,3 @@
-def get_abalone_value(item):
-    value = 1 + ((1 / 3) * (item[2] - 0.5)) + ((1 / 3) * (item[3] - 0.4)) + ((1 / 3) * (item[4] - 0.4))
-    abaloneValue = value * item[5] * 0.5
-    return abaloneValue
-
-
 if __name__ == "__main__":
     import csv
 
@@ -35,12 +29,14 @@ if __name__ == "__main__":
                                  ])
 
     # Placing each Abalones in their respective categories
+    # while also calculating each of their economic values
     category1 = []
     category2 = []
     category3 = []
 
     for row in abalone_data:
-        abalone_value = get_abalone_value(row)
+        value = 1 + ((1 / 3) * (row[2] - 0.5)) + ((1 / 3) * (row[3] - 0.4)) + ((1 / 3) * (row[4] - 0.4))
+        abalone_value = value * row[5] * 0.5
 
         if (
                 ((row[9] > 15) and (row[1] == "I")) or
@@ -63,5 +59,38 @@ if __name__ == "__main__":
             row.append(abalone_value)
             category3.append(row)
 
-    for row in abalone_data:
-        print(row)
+    while True:
+        print("Select an action to take:\n"
+              "  a - Find average\n"
+              "  b - Find highest\n"
+              "  c - Find lowest\n"
+              "  d - Find abalone\n"
+              "  q - quit\n")
+
+        user_action = input("Your choice: ")
+
+        if user_action == "q":
+            break
+
+        if user_action == "a":
+            print("You are finding average\n")
+            while True:
+                print("Find what average?\n"
+                      "  a - Length\n"
+                      "  b - Diameter\n"
+                      "  c - Height\n"
+                      "  d - Whole weight\n"
+                      "  e - Shucked weight\n"
+                      "  f - Viscera Weight\n"
+                      "  g - Shell Weight\n"
+                      "  h - Rings\n"
+                      "  i - Feb temp\n"
+                      "  q - Find another measurement\n")
+
+                user_choice = input("Your choice: ")
+
+                if user_choice == "q":
+                    break
+
+                print()
+        print()
