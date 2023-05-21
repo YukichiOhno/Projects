@@ -139,7 +139,10 @@ if __name__ == "__main__":
     import csv
     import numpy as np
 
-    with open("AbaloneData.csv", "r") as csvfile:
+    user_file = input("Enter Abalone Data File: ")
+    print()
+
+    with open(user_file, "r") as csvfile:
         abalone_reader = csv.reader(csvfile, delimiter=",")
         next(abalone_reader)
 
