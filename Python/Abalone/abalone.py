@@ -1,5 +1,5 @@
-def find_measurement_prompt():
-    print("Find what average?\n"
+def find_measurement_prompt(determiner):
+    print(f"Find what {determiner}?\n"
           "  a - Length\n"  # 2
           "  b - Diameter\n"  # 3
           "  c - Height\n"  # 4
@@ -16,7 +16,7 @@ def find_measurement_prompt():
 def action_choice_calculations(determiner):
     print(f"You are finding {determiner}\n")
     while True:
-        find_measurement_prompt()
+        find_measurement_prompt(determiner)
         user_choice = input("Your choice: ").replace(" ", "")
         print()
         if user_choice == "m":
@@ -33,6 +33,8 @@ def action_choice_calculations(determiner):
             user_choice_calculations(determiner, "shucked weight")
         elif user_choice == "f":
             user_choice_calculations(determiner, "viscera weight")
+        elif user_choice == "g":
+            user_choice_calculations(determiner, "shell weight")
         elif user_choice == "h":
             user_choice_calculations(determiner, "rings")
         elif user_choice == "i":
