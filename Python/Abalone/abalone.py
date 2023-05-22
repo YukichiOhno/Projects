@@ -79,6 +79,7 @@ def user_choice_calculations(determiner, scale):
 
 def base_source_calculations(data, determiner, scale, base):
     import numpy as np
+    import statistics
 
     num = 2
     if scale == "length":
@@ -109,6 +110,11 @@ def base_source_calculations(data, determiner, scale, base):
         measurement = max
     elif determiner == "minimum":
         measurement = min
+    elif determiner == "standard deviation":
+        measurement = statistics.stdev
+    elif determiner == "variance":
+        measurement = statistics.variance
+
 
     group = 1
     if base == "gender":
@@ -169,12 +175,6 @@ if __name__ == "__main__":
                                  # int(row[18]) Economic Value
                                  ])
 
-    # Placing each Abalones in their respective categories
-    # while also calculating each of their economic values
-    category1 = []
-    category2 = []
-    category3 = []
-
     for row in abalone_data:
         value = 1 + ((1 / 3) * (row[2] - 0.5)) + ((1 / 3) * (row[3] - 0.4)) + ((1 / 3) * (row[4] - 0.4))
         abalone_value = value * row[5] * 0.5
@@ -186,7 +186,6 @@ if __name__ == "__main__":
         ):
             row.append("I")
             row.append(abalone_value * 1.5)
-            category1.append(row)
         elif (
                 ((row[8] < 0.4) and (row[6] < 0.4)) or
                 (((row[9] > 15) and (row[1] == "M")) or ((row[9] > 18) and (row[1] == "F"))) or
@@ -194,18 +193,18 @@ if __name__ == "__main__":
         ):
             row.append("II")
             row.append(abalone_value * 0.8)
-            category2.append(row)
         else:
             row.append("III")
             row.append(abalone_value)
-            category3.append(row)
 
     while True:
         print("Select an action to take:\n"
               "  a - Find average\n"
-              "  b - Find highest\n"
-              "  c - Find lowest\n"
-              "  d - Find abalone\n"
+              "  b - Find maximum\n"
+              "  c - Find minimum\n"
+              "  d - Find standard deviation\n"
+              "  e - Find variance\n"
+              "  f - Find abalone\n"
               "  q - quit\n")
 
         user_action = input("Your choice: ").replace(" ", "")
@@ -218,6 +217,10 @@ if __name__ == "__main__":
         elif user_action == "c":
             action_choice_calculations("minimum")
         elif user_action == "d":
+            action_choice_calculations("standard deviation")
+        elif user_action == "e":
+            action_choice_calculations("variance")
+        elif user_action == "f":
             while True:
                 user_id = input("\nEnter Abalone ID (press 'g' to Go Back): ").replace(" ", "")
                 if user_id == 'g':
